@@ -1,0 +1,24 @@
+1. Clareza, legibilidade e coerência do modelo ER
+O texto descreve as entidades principais (Pessoa, Aluno, Professor, Funcionário, Turma, Plano, Mensalidade, Salário, Matrícula, Endereço) e os relacionamentos entre elas, inclusive citando cardinalidades (1:1, 1:N, N:N). Há um esforço em explicar a lógica da especialização de Pessoa.
+
+2. Fidelidade e completude dos modelos lógico e físico
+O trabalho detalha atributos e chaves para cada entidade, já prevendo restrições como NOT NULL, UNIQUE e domínios específicos (planos, status, formas de pagamento). A normalização até 3FN foi discutida e aplicada.
+
+O modelo lógico apresentado parece confuso
+3. Definição correta e justificada de chaves e relacionamentos
+O grupo justificou bem a escolha entre chaves naturais (CPF, CEP) e surrogates (idTurma, idPlano, idMatrícula). Explicaram que natural keys evitam duplicidade e surrogates auxiliam na organização. Também listaram relacionamentos e suas cardinalidades.
+
+Algumas justificativas são repetitivas (“já existente e não duplicável”) e não exploram impacto em desempenho ou integridade. Há inconsistências: professor e funcionário dependem do CPF como PK, mas ao mesmo tempo usam idProfessor e idFuncionario, o que não está claramente resolvido.
+
+4. Alinhamento com o modelo de negócio
+O sistema proposto reflete bem o funcionamento de um studio de Pilates: matrícula, planos com fidelidade, descontos, agendamento de aulas, atribuição de professores, regras de cancelamento e pagamentos recorrentes. Há preocupação com LGPD e ciclo de vida dos dados.
+
+ Algumas regras descritas (multas por quebra de contrato, descontos adicionais, vínculo entre plano e benefícios) não aparecem refletidas nas entidades de forma clara. O modelo fica mais focado em cadastro e pagamento, mas menos robusto em aspectos administrativos.
+
+5. Qualidade da documentação e apresentação técnica
+A equipe apresentou explicações detalhadas sobre cada entidade, relacionamentos e normalização. Há um bom esforço em estruturar a justificativa técnica e relacionar as decisões ao negócio.
+
+6. Robustez da estrutura frente ao cenário escolhido
+A estrutura básica suporta operações típicas de um studio (controle de turmas, planos, professores, pagamentos). A especialização de Pessoa em Aluno, Professor e Funcionário mostra preocupação com organização.
+
+O modelo não aborda escalabilidade (ex.: turmas grandes, histórico de pagamentos, reajustes futuros). A relação Plano–Mensalidade–Matrícula parece confusa, podendo gerar redundâncias.
